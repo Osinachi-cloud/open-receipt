@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hide-desktop {
+    display: none;
+
+}
+
+
+
+.desktop {
+    display: hidden;
+}
+
+// .disabled-button {
+//     background-color: red;
+//     color: white;
+// }
+
+.enabled-button {
+    background-color: green;
+    color: white;
+}
+
+.disabled-button {
+    cursor: not-allowed;
+  }
+
+.green-background {
+    background-color: green;
+}
+
+
+@media screen and (max-width: 800px) {
+    div {
+        // background-color: red;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .mobile {
+        display: none;
+
+    }
+
+    .hide-desktop {
+        display: grid;
+
+    }
+}

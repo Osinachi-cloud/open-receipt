@@ -1,0 +1,226 @@
+
+
+
+
+
+<div class="md:p-[30px] p-[10px] grid gap-[4rem]">
+
+    <div class="grid md:grid-cols-2 grid-cols-1 gap-[7rem] font-[NUNITO] md:w-[70%] w-[100%]">
+
+        <!-- card 1 starts here  -->
+        <div class="grid gap-[2rem]">
+            <div class="md:text-[24px] text-[14px] text-[grey]">
+                Total Balance
+            </div>
+            <div class="bg-[#fff] rounded-[10px] md:p-[4rem] p-[1rem] grid gap-[1rem] md:w-full">
+
+                <div class="border-b-[1px] border-grey border-b py-[0rem] flex justify-between">
+                    <p class="font-[900] md:text-[24px] text-[14px]">$240,399</p>
+                    <p>All Accounts</p>
+                </div>
+
+                <div class="bg-[#299D91] rounded-[10px] p-[2rem]">
+                    <div class="flex justify-between items-center">
+                        <div class="text-[#F2F2F2] text-[14px] md:text-[18px] font-[200]">Account type</div>
+                        <div>
+                            <img src="/assets/images/Mastercard (1).png" class="" alt="">
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <h1 class="text-[#FFF] text-[14px] md:text-[18px] font-[800]">Credit Card</h1>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <div class="text-[#F2F2F2] text-[16px] font-[200]">
+                            **** **** **** 2598
+                        </div>
+                        <div class="flex gap-[2rem] items-center">
+                            <div class="text-[#F2F2F2] md:text-[18px] text-[14px] font-[200]">$25000</div>
+                            <img src="/assets/images/arrow-right-up.png" class="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- card 1 ends here  -->
+        <!-- card 2 starts here  -->
+
+
+        <div class="grid gap-[2rem]">
+            <div class="text-[24px] text-[grey]">
+                Transactions
+            </div>
+            <div class="bg-[#fff] rounded-[10px] p-[4rem] grid gap-[1rem]">
+
+                <div class="py-[0rem] border-b flex justify-between">
+                    <div class="flex items-center gap-[1rem]">
+                        <p class="font-[900] text-[24px]">$200,000</p>
+                        <div class="flex items-center mb-[1rem] cursor-pointer">
+                            <img src="/assets/icons/ink.png" alt="">
+                        </div>
+
+                    </div>
+                    <p>May, 2023</p>
+                </div>
+
+                <div class="flex justify-between">
+
+                    <div class="grid gap-[2rem]">
+                        <div class="">
+                            <div class="flex items-center gap-[1rem]">
+                                <div>
+                                    <img src="/assets/icons/Vector.png" alt="">
+                                </div>
+                                <p class="text-[#878787] text-[14px]">Target Achieved</p>
+                            </div>
+                            <div class="flex items-center gap-[1rem]">
+                                <span>
+                                </span>
+                                <div class="text-[20px] font-[700]">$12,500</div>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <div class="flex items-center gap-[1rem]">
+                                <div>
+                                    <img src="/assets/icons/goal.png" alt="">
+                                </div>
+                                <p class="text-[#878787] text-[14px]">Target Achieved</p>
+                            </div>
+                            <div class="flex items-center gap-[1rem]">
+                                <span>
+                                </span>
+                                <div class="text-[20px] font-[700] mr-[-1rem]">$12,500</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gap-[1rem]">
+                        <div>
+                            <img src="/assets/images/Graph (1).png" alt="">
+                        </div>
+                        <div class="text-[16px]">Target vs Achievement</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- card 1 ends here  -->
+
+    </div>
+
+
+
+    <div class="transaction_card grid gap-[2rem] md:grid-cols-3  rounded-[10px]">
+
+        <div class="col-span-1 p-[2rem] bg-[#fff] rounded-[15px]">
+            <div class="flex justify-between mb-[30px]">
+                <div class="deposit">
+                    <p>Deposit</p>
+                </div>
+                <div class="">
+                    <p class="text-[#9155FD]">View All</p>
+                </div>
+            </div>
+
+            <div class="my-[1rem]" *ngFor="let deposit of deposits">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[2rem]">
+                        <div class="">
+                            <img src="/assets/images/calc.png" class="h-[40px]" />
+                        </div>
+                        <div class="leading-[5px]">
+                            <div class="text-[12px]">
+                                <h3>{{deposit?.location}}</h3>
+                            </div>
+                            <div class="text-[grey] text-[12px]">
+                                <p>{{deposit?.operatorName}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="justify-end">
+                        <p [ngClass]="{'red': deposit.amount < 0, 'green': deposit.amount >= 0 }">NGN{{ deposit?.amount
+                            }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- <ngx-charts-bar-vertical-2d [view]="[width, height]" [customColors]="customColors" [results]="multi"
+            [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical-2d> -->
+    </div>
+
+</div>
+
+
+<div class=" py-[4rem] flex justify-center">
+    <div class="border w-full">
+        <div class="bg-[#E4E6E8] flex justify-between items-center p-[4rem]">
+            <div class="flex items-center w-[100px]">
+                <img src="/assets/images/LOGO 1.png" alt="">
+            </div>
+            <p class="text-[#7535FD]">Transaction Receipt</p>
+        </div>
+
+        <div class="bg-[#fff] p-[4rem] grid gap-[2rem]">
+
+            <div class="text-center">Kalon.ng</div>
+
+            <div class="text-center font-[NUNITO-LIGHT] text-[18px]">Lekki, Lagos Nigeria</div>
+
+            <div class="text-[#3D3D3D] grid gap-[1rem]">
+
+                <div
+                    class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-[#747890] pr-[1rem]">
+                    <div>Transaction Date</div>
+                    <div>Oct 21,2023,17:26</div>
+                </div>
+
+                <div
+                    class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-[#747890] pr-[1rem]">
+                    <div>Cardpan</div>
+                    <div>64673958878</div>
+                </div>
+
+                <div
+                    class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-[#747890] pr-[1rem]">
+                    <div>Date</div>
+                    <div>6th, Sep, 2023</div>
+                </div>
+
+                <div
+                    class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-[#747890] pr-[1rem]">
+                    <div>Transaction ref</div>
+                    <div>0000998978</div>
+                </div>
+
+                <div
+                    class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-[#747890] pr-[1rem]">
+                    <div>Transaction Amount</div>
+                    <div>25,000</div>
+                </div>
+
+                <div
+                    class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-[#747890] pr-[1rem]">
+                    <div>Transaction Status</div>
+                    <div class="text-[#1AD598]">Approved</div>
+                </div>
+
+                <div
+                    class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-[#747890] pr-[1rem]">
+                    <div>Payment method</div>
+                    <div>POS</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

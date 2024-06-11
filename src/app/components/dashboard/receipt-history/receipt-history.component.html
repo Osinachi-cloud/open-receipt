@@ -1,0 +1,464 @@
+<div class="bg-[#F5F4F7] h-fit md:p-[2rem] p-[2rem]">
+    <div class="flex justify-between items-center mb-[5rem]">
+        <div class="flex justify-between items-center w-[100%]">
+            <div class="">
+                <h2 class="text-[#15192C] font-[600] text-[27px] leading-[33px]">Receipt History</h2>
+            </div>
+            <div class="flex justify-center gap-2 items-center bg-[#fff] p-[1rem] rounded-[8px]">
+                <div class="flex justify-center h-[20px]">
+                    <img class="h-[100%]" src="/assets/images/download.png" alt="">
+                </div>
+                <span class="text-[#7B57FC]">
+                    Export
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="flex items-center justify-between pb-4 ">
+        <div class="w-[100%] md:flex gap-[2rem] justify-end items-center py-[2rem]">
+
+            <div class="flex items-center">
+                <div class="gap-[2rem]">
+                    <div class="p-[1rem] py-[0.5rem] bg-[#fff] rounded-[8px]">
+                        <input id="countries" type="date" placeholder="hello"
+                            class="bg-[#fff] outline-none text-[#4B5563] text-[14px] leading-[150%] text-[ #4B5563] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div
+                class="bg-[#fff]  rounded-[8px] gap-[1rem] flex p-[1rem] py-[0.5rem] md:w-[30%] w-[100%] md:mt-[0] mt-[1rem]">
+                <div class="flex justify-center items-center">
+                    <img src="/assets/images/inputSearch.png" alt="">
+                </div>
+                <input type="text" id="table-search"
+                    class="block p-2 w-[90%] bg-[#FBFBFB] text-gray-900 outline-none  rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Search by amount , payment method...">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="relative overflow-x-auto sm:rounded-lg">
+
+        <table class="w-full text-[14px] leading-[150%] text-[#4B5563] text-left ">
+            <thead class="text-[14px] italic font-[100]  text-[#374151] uppercase bg-[#e1e1e1]">
+                <tr class="border-b">
+                    <th scope="col" class="p-[2rem]">
+                        Invoice Number
+                    </th>
+                    <th scope="col" class="p-[2rem]">
+                        Customer Name
+                    </th>
+                    <th scope="col" class="p-[2rem]">
+                        Date
+                    </th>
+                    <th scope="col" class="p-[2rem]">
+
+                        Amount
+                    </th>
+                    <th scope="col" class="p-[2rem]">
+                        Email
+                    </th>
+                    <th scope="col" class="p-[2rem]">
+                        ProductId
+                    </th>
+                    <th scope="col" class="p-[2rem]">
+                        Status
+                    </th>
+                    <th scope="col" class="p-[2rem]">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let terminal of data"
+                    class="border-separate border bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+                    <td class="p-[2rem]  ">
+                        {{terminal.invoiceNumber}}
+                    </td>
+                    <td class="p-[2rem]">
+                        {{terminal.customerName}}
+                    </td>
+                    <td class="p-[2rem]">
+                        {{terminal.date}}
+                    </td>
+                    <td class="p-[2rem]">
+                        NGN{{terminal.amount}}
+                    </td>
+                    <td class="p-[2rem]">
+                        {{terminal.email}}
+                    </td>
+                    <td class="p-[2rem]">
+                        {{terminal.productId}}
+                    </td>
+
+                    <td class="p-[1rem]">
+
+                        <div *ngIf="terminal.status === 'created' "
+                            class="bg-[#EAECFF] p-[1rem] py-[0.5rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
+                            <div>
+                                <img src="/assets/images/create.png" alt="">
+                            </div>
+                            <span class="text-[#3D42AD]">Created</span>
+                        </div>
+
+                        <div *ngIf="terminal.status === 'pending' "
+                            class="bg-[#fee0b5] p-[1rem] py-[0.5rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
+                            <div>
+                                <img src="/assets/images/pending.png" alt="">
+                            </div>
+                            <span class="text-[#B5850B]">Pending</span>
+                        </div>
+
+                        <div *ngIf="terminal.status === 'approve' "
+                            class="bg-[#EDFFEA] p-[1rem] py-[0.5rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
+                            <div>
+                                <img src="/assets/images/success.png" alt="">
+                            </div>
+                            <span class="text-[#165E3D]">Approve</span>
+                        </div>
+
+                        <div *ngIf="terminal.status === 'decline' "
+                            class="bg-[#FFEAEA] p-[1rem] py-[0.5rem] flex items-center justify-center w-[120px] gap-[1rem] rounded-[4px]">
+                            <div>
+                                <img src="/assets/images/declined.png" alt="">
+                            </div>
+                            <span class="text-[#B83131]">Decline</span>
+                        </div>
+                    </td>
+                    <td class="p-[1rem] flex gap-[3rem]">
+                        <!-- <img (click)="toggleReceiptModal()" class="cursor-pointer" src="/assets/images/Vector.png" alt="">
+                        <i (click)="toggleInvoiceModal()"  class="fa fa-user"></i> -->
+
+                        <div ngbDropdown container="body">
+                            <button type="button" class="" ngbDropdownToggle>
+                                Actions
+                            </button>
+                            <div class="rounded-[8px]" ngbDropdownMenu>
+                                <button class="text-[12px] leading-[2rem]" (click)="toggleReceiptModal()"
+                                    ngbDropdownItem>Download Receipt</button>
+                                <button class="text-[12px] leading-[2rem]" (click)="toggleInvoiceModal()"
+                                    ngbDropdownItem>Download Invoice</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="mt-[4rem] bg-[#fff] flex justify-between p-[1rem] px-[2rem]">
+            <div>
+                <span> {{size}} Result</span>
+            </div>
+            <div class="flex justify-end gap-[2rem] ">
+                <div (click)="pageIncrement()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
+                    Previous
+                </div>
+                <div (click)="pageDecrement()" class="p-[1rem] py-[0.5rem] border rounded-[4px]">
+                    Next
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div *ngIf="showReceiptModal"
+    class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+    <div class="relative w-full my-6 mx-auto">
+        <div class="border-0 rounded-[8px] shadow-lg relative flex flex-col w-full  outline-none focus:outline-none">
+            <div class="grid place-items-center items-center p-[4rem] w-full">
+                <div class="flex justify-end w-full">
+                    <span class="cursor-pointer" (click)="toggleReceiptModal()"><img class="h-[20px]"
+                            src="/assets/images/x.png" alt=""></span>
+                </div>
+
+                <div class="grid gap-[1rem] mt-[2rem] items-center place-items-center">
+
+                    <div class="bg-[#fff] rounded-[20px]  flex justify-center">
+                        <div class="min-w-[50rem]">
+
+
+                            <div class=" p-[4rem] grid gap-[2rem]">
+
+                                <div class="flex justify-center"><img src="/assets/images/tick-circle.png" alt=""></div>
+
+                                <div class="text-center font-[NUNITO] text-[18px]">Transaction Successful</div>
+
+                                <div class="text-[#3D3D3D] grid gap-[1rem]">
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Transfer to bank</div>
+                                        <div>- N 2,500.00</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Charges</div>
+                                        <div>2.00</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Date</div>
+                                        <div>6th, Sep, 2023</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Time</div>
+                                        <div>7:36 PM</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Status</div>
+                                        <div>SUCCESS</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Bank Name</div>
+                                        <div>Opay</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Account Number</div>
+                                        <div>7556367629</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Account Name</div>
+                                        <div>Larry Ayo</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] border-b py-[1rem] border-grey pr-[1rem]">
+                                        <div>Paid with</div>
+                                        <div>Wallet</div>
+                                    </div>
+
+                                    <div
+                                        class="flex justify-between font-[NUNITO-LIGHT] text-[16px] py-[2rem] pr-[1rem]">
+                                        <div>Transaction ID</div>
+                                        <div>#555678800</div>
+                                    </div>
+                                </div>
+                                <div (click)="downloadReceipt()"
+                                    class="bg-[#7535FD] mx-auto text-[#fff] text-[18px] py-[2rem] px-[3rem] w-fit rounded-[5px] font-[NUNITO-LIGHT] mt-[2rem]">
+                                    Download Receipt
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-end p-6 rounded-b">
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showReceiptModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card flex justify-content-center">
+    <p-toast></p-toast>
+    <p-menu #menu [model]="items" [popup]="true"></p-menu>
+    <button pButton type="button" (click)="menu.toggle($event)" icon="pi pi-bars" label="Show">HELLO</button>
+</div> -->
+
+<!-- <button type="button" pButton pRipple icon="pi pi-bars" label="Show" (click)="menu.toggle($event)">HELLO</button>
+<p-menu #menu [popup]="true" [model]="items"></p-menu> -->
+
+
+
+
+<!-- Generate Receipt -->
+
+
+<div *ngIf="showInvoiceModal"
+    class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+    <div class="relative w-full my-6 mx-auto">
+        <div class="border-0 shadow-lg relative flex flex-col w-full  outline-none focus:outline-none">
+            <div class="grid place-items-center items-center p-[4rem] w-full">
+                <div class="flex justify-end w-full">
+                    <span class="cursor-pointer" (click)="toggleInvoiceModal()"><img class="h-[20px]"
+                            src="/assets/images/x.png" alt=""></span>
+                </div>
+
+                <div class="grid gap-[1rem] mt-[2rem] items-center place-items-center">
+
+                    <div class="bg-[#fff]  flex justify-center">
+                        <div class="min-w-[50rem]">
+
+
+                            <div class=" flex justify-center">
+                                <div class="border w-full">
+
+                                    <div class="bg-[#7535FD] flex justify-between items-center p-[4rem]">
+                                        <div>
+                                            <p class="text-[#fff] font-[NUNITO] text-[30px]">Invoice</p>
+                                            <div class="flex items-center w-[100px]">
+                                                <img src="/assets/images/LOGO 1.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="text-[#fff] text-right text-[12px]">
+                                            <p>Marx Properties</p>
+                                            <p>42, Adeyemi Street, Ikate</p>
+                                            <p>+(234)-8104213955</p>
+                                            <p>Marxpropertiesng@gmail.com</p>
+                                        </div> 
+                                    </div>
+
+                                    <div class="bg-[#fff] p-[4rem] grid gap-[2rem]">
+
+                                        <div class="flex justify-between">
+
+                                            <div class="grid gap-[1rem]">
+                                                <div class="text-[18px] font-[600]">Bill To</div>
+                                                <div class="text-[12px]">
+                                                    <span class="font-[600]">Customer's Name: </span>
+                                                    <span>Maya</span>
+                                                </div>
+                                                <div class="text-[12px]">
+                                                    <span class="font-[600]">Invoice Date: </span>
+                                                    <span>07/02/2026</span>
+                                                </div>
+                                                <div class="text-[12px]">
+                                                    <span class="font-[600]">Payment Due </span>
+                                                    <span>07/02/2026</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="grid gap-[1rem]">
+                                                <div class="text-[18px] font-[600]">Invoice Details</div>
+
+                                                <div class="text-[12px]">
+                                                    <span class="font-[600]">Invoice ID: </span>
+                                                    <span>09048377734</span>
+                                                </div>
+                                                <div class="text-[12px]">
+                                                    <span class="font-[600]">Invoice Date: </span>
+                                                    <span>Sep 20, 2023</span>
+                                                </div>
+                                                <div class="text-[12px]">
+                                                    <span class="font-[600]">Payment Due: </span>
+                                                    <span>Sep 20, 2023</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="grid py-[2rem]">
+
+                                            <div class="grid bg-[#f9f9f9] grid-cols-5 font-[NUNITO]">
+                                                <div class="border-t text-center p-[1rem]">Description</div>
+                                                <div class="border-t text-center p-[1rem]">Unit Price</div>
+                                                <div class="border-t text-center p-[1rem]">Quantity</div>
+                                                <div class="border-t text-center p-[1rem]">Tax</div>
+                                                <div class="border-t text-center p-[1rem]">Total</div>
+                                            </div>
+
+                                            <div class="grid grid-cols-5 text-grey">
+                                                <div class="border-t text-center p-[1rem]">Android POS </div>
+                                                <div class="border-t text-center p-[1rem]">N 25,000</div>
+                                                <div class="border-t text-center p-[1rem]">1</div>
+                                                <div class="border-t text-center p-[1rem]">N 25,000</div>
+                                                <div class="border-t text-center p-[1rem]">N 25,000</div>
+                                            </div>
+
+                                            <div class="grid grid-cols-5 text-grey">
+                                                <div class="border-y text-center p-[1rem]">Android POS </div>
+                                                <div class="border-y text-center p-[1rem]">N 25,000</div>
+                                                <div class="border-y text-center p-[1rem]">1</div>
+                                                <div class="border-y text-center p-[1rem]">N 25,000</div>
+                                                <div class="border-y text-center p-[1rem]">N 25,000</div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="flex justify-end">
+
+                                            <div>
+                                                <span>Sub total: </span>
+                                                <span>N 25,000</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex justify-end">
+                                            <div>
+                                                <span>Tax: </span>
+                                                <span>0.00</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex justify-end">
+                                            <div class="border-y-2 border-[#7535FD] py-[1.5rem]">
+                                                <span>Total: </span>
+                                                <span>N 25,000</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex justify-center gap-[2rem]">
+
+                                            <div (click)="downloadInvoice()"
+                                                class="bg-[#7535FD] text-[#fff] text-[14px] py-[1.5rem] px-[3rem] w-fit rounded-[5px] font-[NUNITO-LIGHT] mt-[2rem]">
+                                                Share Invoice
+                                            </div>
+
+                                            <div (click)="downloadInvoice()"
+                                                class="bg-[#7535FD] text-[#fff] text-[14px] py-[1.5rem] px-[3rem] w-fit rounded-[5px] font-[NUNITO-LIGHT] mt-[2rem]">
+                                                Download Invoice
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="flex items-center justify-end p-6 rounded-b">
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showInvoiceModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+
+
+<!-- Generate Receipt -->

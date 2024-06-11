@@ -1,0 +1,350 @@
+<!-- 
+<div class="bg-[#F5F4F7] h-fit md:pr-[2rem] p-[2rem] ">
+    
+    <div class="flex justify-between items-center mb-[3rem]">
+        <div class="">
+            <div class="">
+                <h2 class="text-[#15192C] font-[600] text-[27px] leading-[33px]">Dashboard</h2>
+            </div>
+            <div class="leading-[67px] text-[18px]  text-[#1C065A]">
+                <p>Information about your terminals and usages</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 grid-cols-1">
+        <div class="md:col-span-2 col-span-2 grid gap-[2rem]">
+            <div
+                class="dashbord_items gap-[1rem] grid md:grid-cols-4 grid-cols-1 justify-between my-0 bg-[#fff] rounded-[8px] p-[30px] mb-[20px]">
+                <div
+                    class="col-span-1 flex md:justify-center p-[2rem] items-center  md:border-r border-b md:border-b-0">
+                    <div class="mr-[8px] flex justify-center items-center bg-[#CEE0F3] rounded-[16px] p-[2rem]">
+                        <img src="/assets/images/Paper.png" />
+                    </div>
+
+                    <div class="mr-[35px] font-[700] text-[16px] leading-[24px] text-[#92959E]">
+
+                        <div class="mr-[35px] font-[700] text-[16px] leading-[24px] text-[#92959E]">
+                            <p>Terminals</p>
+                        </div>
+                        <div class="text-[20px] leading-[30px] text-[#15192C]">
+                            <p>{{overviewReport?.activeTerminal}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="col-span-1 flex md:justify-center p-[2rem] items-center  md:border-r border-b md:border-b-0">
+
+
+                    <div class="mr-[8px] flex justify-center items-center bg-[#CEE0F3] rounded-[16px] p-[2rem]">
+                        <img src="/assets/images/Swap.png" />
+                    </div>
+                    <div class="mr-[35px] font-[700] text-[16px] leading-[24px] text-[#92959E]">
+                        <div class="">
+                            <p>Active</p>
+                        </div>
+                        <div class="text-[20px] leading-[30px] text-[#15192C]">
+                            <p>{{overviewReport?.balance}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="col-span-1 flex md:justify-center p-[2rem] items-center  md:border-r border-b md:border-b-0">
+
+                    <div class="mr-[8px] flex justify-center items-center bg-[#CEE0F3] rounded-[16px] p-[2rem]">
+                        <img src="/assets/images/Profile.png" />
+                    </div>
+                    <div class="mr-[35px] font-[700] text-[16px] leading-[24px] text-[#92959E]">
+
+
+                        <div class="">
+                            <p>Users</p>
+                        </div>
+                        <div class="text-[20px] leading-[30px] text-[#15192C]">
+                            <p>{{overviewReport?.numberOfTerminals}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-1 flex md:justify-center p-[2rem] items-center">
+                    <div class="mr-[8px] flex justify-center items-center bg-[#CEE0F3] rounded-[16px] p-[2rem]">
+                        <img src="/assets/images/Graph.png" />
+                    </div>
+                    <div class="mr-[35px] font-[700] text-[16px] leading-[24px] text-[#92959E]">
+
+                        <div class="">
+                            <p>Balance</p>
+                        </div>
+                        <div class="text-[20px] leading-[30px] text-[#15192C]">
+                            <p class="whitespace-nowrap">{{overviewReport?.numberOfUsers}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transaction_card grid md:grid-cols-2 bg-[#fff] rounded-[10px] p-[30px]">
+
+                <div class="col-span-1 p-[2rem]">
+                    <div class="flex justify-between mb-[30px]">
+                        <div class="deposit">
+                            <p>Deposit</p>
+                        </div>
+                        <div class="">
+                            <p class="text-[#9155FD]">View All</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal_rows" *ngFor="let deposit of deposits">
+                        <div class="pos_locatn">
+                            <div class="pos_img">
+                                <img src="/assets/images/calc.png" />
+                            </div>
+                            <div class="desc">
+                                <div class="desc_1">
+                                    <p>{{deposit?.location}}</p>
+                                </div>
+                                <div class="desc_2">
+                                    <p>{{deposit?.operatorName}}</p>
+                                </div>
+                            </div>
+                            <div class="amt">
+                                <p>+N{{deposit?.amount}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-span-1  md:border-l p-[2rem] border-t md:border-t-0">
+                    <div class="flex justify-between mb-[30px]">
+                        <div class="withdrawal">
+                            <p>Withdraw</p>
+                        </div>
+                        <div class="">
+                            <p class="text-[#9155FD]">View All</p>
+                        </div>
+                    </div>
+
+                    <div class="terminal_rows" *ngFor="let eachWithdrwawal of withdrawal">
+                        <div class="pos_locatn">
+                            <div class="pos_img">
+                                <img src="/assets/images/calc.png" />
+                            </div>
+                            <div class="desc">
+                                <div class="desc_1">
+                                    <p>{{eachWithdrwawal?.location}}</p>
+                                </div>
+                                <div class="desc_2">
+                                    <p>{{eachWithdrwawal.operatorName}}</p>
+                                </div>
+                            </div>
+                            <div class="amt">
+                                <p>-N{{eachWithdrwawal.amount}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-1 p-[40px] bg-[#fff] rounded-[24px] md:ml-[2rem] mt-[2rem] md:mt-0">
+            <div class="activity_row">
+                <div class="activity">
+                    <p>Activity</p>
+                </div>
+                <div class="image_edit">
+                    <img src="/assets/images/logo.png" />
+                </div>
+            </div>
+            <div class="activity_line">
+                <div class="activity_img">
+                    <img src="/assets/images/logo.png" />
+                </div>
+                <div class="activity_des">
+                    <div class="update">
+                        <h3 class="font-[900] text-[#15192C] leading-[21px]">Trevauty Update</h3>
+                    </div>
+                    <div class="text">
+                        <p>New Terminal was installed at Lekki Phase 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="activity_line liner">
+
+                <div class="activity_img">
+                    <img src="/assets/images/gravatar.png" />
+                </div>
+                <div class="activity_des">
+                    <div class="update">
+                        <h3 class="font-[900] text-[#15192C] leading-[21px]">Trevauty Update</h3>
+                    </div>
+                    <div class="text">
+                        <p>New Terminal was installed at Lekki Phase 2</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity_line liner">
+                <div class="activity_img">
+                    <img src="/assets/images/gravatar.png" />
+                </div>
+                <div class="activity_des">
+                    <div class="update">
+                        <h3 class="font-[900] text-[#15192C] leading-[21px]">Trevauty Update</h3>
+                    </div>
+                    <div class="text">
+                        <p>New Terminal was installed at Lekki Phase 2</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity_line liner">
+                <div class="activity_img">
+                    <img src="/assets/images/logo.png" />
+                </div>
+                <div class="activity_des">
+                    <div class="update">
+                        <h3 class="font-[900] text-[#15192C] leading-[21px]">Trevauty Update</h3>
+                    </div>
+                    <div class="text">
+                        <p>New Terminal was installed at Lekki Phase 2</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="line_width">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form class="grid grid-cols-2 bg-[#fff] p-[3rem] gap-[3rem]">
+    <div>
+
+        <div>
+            <p>Your Profile Picture</p>
+            <div class="h-[200px] mb-[2rem] w-[35%] rounded-[2rem] p-[2rem] bg-gradient-to-r from-violet-500 to-fuchsia-500" >
+                <div class="flex justify-end gap-[2rem]">
+                    <img class="cursor-pointer" src="/assets/images/fi_upload-cloud.png" alt="">
+                    <img class="cursor-pointer" src="/assets/images/Delete.png" alt="">
+                </div>
+   
+            </div>
+
+
+
+            <div class="w-full grid md:grid-cols-2 gap-[3rem]">
+                <div class="mb-5">
+                    <label for="fullName" class="block mb-2 font-medium text-gray-900">
+                        Full Name</label>
+                    <input type="text" id="fullName"
+                        class="bg-[#F2F2F2] border border-[#EDF2F6] text-gray-900  rounded-[4px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                        placeholder="Full Name" required>
+                </div>
+        
+                <div class="mb-5">
+                    <label for="email" class="block mb-2 font-medium text-gray-900">Email
+                        Address</label>
+                    <input type="email" id="email"
+                        class="bg-[#F2F2F2] border border-[#EDF2F6] text-gray-900  rounded-[4px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                        placeholder="Email" required>
+                </div>
+        
+        
+            </div>
+
+            <div class="w-full grid md:grid-cols-2 gap-[3rem]">
+                <div class="mb-5">
+                    <label for="phoneNumber" class="block mb-2 font-medium text-gray-900">
+                        Phone Number</label>
+                    <input type="phone" id="phoneNumber"
+                        class="bg-[#F2F2F2] border border-[#EDF2F6] text-gray-900  rounded-[4px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                        placeholder="Phone Number" required>
+                </div>
+        
+                <div class="mb-5">
+                    <label for="country" class="block mb-2 font-medium text-gray-900">
+                        Country</label>
+                    <input type="text" id="country"
+                        class="bg-[#F2F2F2] border border-[#EDF2F6] text-gray-900  rounded-[4px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                        placeholder="Country" required>
+                </div>
+        
+            </div>
+
+            <div class="w-full grid md:grid-cols-2 gap-[3rem]">
+                <div class="mb-5">
+                    <label for="email" class="block mb-2 font-medium text-gray-900">
+                        Address</label>
+                    <input type="email" id="address"
+                        class="bg-[#F2F2F2] border border-[#EDF2F6] text-gray-900  rounded-[4px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                        placeholder="Address" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="flex gap-[3rem] items-center">
+            <button type="submit"
+            class="text-white bg-[#7B57FC] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-[8px] w-full sm:w-auto px-5 py-3 text-center">Update Profile</button>
+            <a href="#" class="text-[16px] no-underline">
+                Settings
+            </a>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form class="w-[50%] m-auto" action="">
+        <div class="mb-5">
+            <label for="phoneNumber" class="block mb-2 font-medium text-gray-900">Text</label>
+            <input type="text" id="text" placeholder="Phone Number"
+                class="border border-[#E0E4EC] text-gray-900 bg-[#F2F2F2] rounded-[15px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                required>
+        </div>
+
+        <div class="mb-5">
+            <label for="email" class="block mb-2 font-medium text-gray-900">Your
+                email</label>
+            <input type="email" id="email"
+                class="bg-[#F2F2F2] border border-[#EDF2F6] text-gray-900  rounded-[15px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                placeholder="Full Name" required>
+        </div>
+        <div class="mb-5">
+            <label for="phoneNumber" class="block mb-2 font-medium text-gray-900">Text</label>
+            <input type="text" id="text" placeholder="Phone Number"
+                class="border border-[#E0E4EC] text-gray-900 bg-[#F2F2F2] rounded-[15px] focus:ring-blue-500 focus:border-blue-500 block w-full p-4"
+                required>
+        </div>
+
+        <button type="submit"
+        class="text-white bg-[#7B57FC] focus:ring-4 focus:outline-none text-[16px] focus:ring-blue-300 font-medium rounded-[15px] w-full px-5 py-4 text-center tracking-wide">Generate Receipt</button>
+</form>
